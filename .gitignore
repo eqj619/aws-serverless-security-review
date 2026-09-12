@@ -1,0 +1,18 @@
+# Review output — never commit evidence dumps or account data
+evidence/
+*.json.err
+security_issues.local.md
+
+# Credentials and local config
+.env
+.env.*
+*.pem
+*.key
+.aws/
+credentials
+
+# Editor / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/
