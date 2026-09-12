@@ -52,10 +52,10 @@ Clone into your skills directory:
 
 ```bash
 # Personal, available in every project
-git clone <this-repo-url> ~/.claude/skills/aws-serverless-security-review
+git clone https://github.com/eqj619/aws-serverless-security-review.git ~/.claude/skills/aws-serverless-security-review
 
 # Or per project, committed with the repository
-git clone <this-repo-url> .claude/skills/aws-serverless-security-review
+git clone https://github.com/eqj619/aws-serverless-security-review.git .claude/skills/aws-serverless-security-review
 ```
 
 Then start Claude Code in the project and ask for a security review. The skill triggers on
