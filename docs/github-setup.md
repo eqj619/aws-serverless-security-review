@@ -26,29 +26,29 @@ gh repo create aws-serverless-security-review --private --source=. --remote=orig
 
 ```bash
 cd aws-serverless-security-review
-git remote add origin git@github.com:<あなたのアカウント>/aws-serverless-security-review.git
+git remote add origin git@github.com:eqj619/aws-serverless-security-review.git
 git push -u origin main
 ```
 
-HTTPS を使う場合は `https://github.com/<アカウント>/aws-serverless-security-review.git`
+HTTPS を使う場合は `https://github.com/eqj619/aws-serverless-security-review.git`
 を指定してください。認証には SSH 鍵、または Personal Access Token の利用を推奨します。
 
 ## 3. Claude Code への導入
 
 ```bash
 # 個人用（全プロジェクトで有効）
-git clone git@github.com:<アカウント>/aws-serverless-security-review.git \
+git clone git@github.com:eqj619/aws-serverless-security-review.git \
   ~/.claude/skills/aws-serverless-security-review
 
 # プロジェクト単位（チームで共有する場合）
-git clone git@github.com:<アカウント>/aws-serverless-security-review.git \
+git clone git@github.com:eqj619/aws-serverless-security-review.git \
   .claude/skills/aws-serverless-security-review
 ```
 
 プロジェクト単位で共有する場合は、対象プロジェクト側で submodule にする方法もあります。
 
 ```bash
-git submodule add git@github.com:<アカウント>/aws-serverless-security-review.git \
+git submodule add git@github.com:eqj619/aws-serverless-security-review.git \
   .claude/skills/aws-serverless-security-review
 ```
 
