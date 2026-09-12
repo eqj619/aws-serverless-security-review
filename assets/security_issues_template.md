@@ -57,7 +57,8 @@ unknown is useful; an unknown reported as "no findings" is misleading.>
 
 - **Priority:** P0 | P1 | P2 | P3
 - **Layer:** <1–7 / Continuous monitoring / IAM (cross-cutting)>
-- **Status:** Open | Approved | Fixed | Accepted (risk accepted) | Deferred | Not applicable
+- **Workshop module:** <Module 1–7 of the AWS defense-in-depth workshop, or "—">
+- **Status:** Open | Approved | Fixed (code) | Applied (deployed) | Accepted (risk accepted) | Deferred | Not applicable
 - **Affected:** `<ARN>` / `<path/to/file.ts:84>`
 - **Effort:** S | M | L
 
@@ -90,6 +91,14 @@ Within a priority band, cheaper fixes first.>
 |---|---|---|---|---|---|
 | <YYYY-MM-DD> | SEC-003 | Fixed — Cognito MFA set to REQUIRED, TOTP | `infra/lib/auth-stack.ts` | `cdk synth` passed | Pending — user deploys |
 
+## Deployments (apply mode only)
+
+| Date | ID | Account / Region | Plan or change set | Verification | Rollback path |
+|---|---|---|---|---|---|
+| <YYYY-MM-DD> | SEC-003 | 1234****9012 / us-east-1 | `cdk diff` — 1 modified, 0 replaced | `get-user-pool-mfa-config` → `ON` | Previous template, `cdk deploy` of prior commit |
+
+Leave this section out entirely when nothing was deployed from here.
+
 ## Accepted risks and deferrals
 
 | ID | Decision | Reason | Decided by | Review again |
@@ -116,4 +125,5 @@ dependency on another team. Name the exact command or console path.>
   change, or the top of the file starts lying about the bottom.
 - **`Fixed` means the code change is merged and validated.** If it still needs a deploy to
   take effect, say so in the Deployed column — a fix that is not deployed is not protecting
-  anything yet.
+  anything yet. `Applied` is reserved for a change that was deployed and then verified
+  against the live resource.
