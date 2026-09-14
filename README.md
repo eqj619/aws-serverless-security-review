@@ -58,6 +58,14 @@ git clone https://github.com/eqj619/aws-serverless-security-review.git ~/.claude
 git clone https://github.com/eqj619/aws-serverless-security-review.git .claude/skills/aws-serverless-security-review
 ```
 
+To share it with a team and keep it pinned to a known revision, add it as a submodule of the
+project instead:
+
+```bash
+git submodule add https://github.com/eqj619/aws-serverless-security-review.git \
+  .claude/skills/aws-serverless-security-review
+```
+
 Then start Claude Code in the project and ask for a security review. The skill triggers on
 requests about AWS security, hardening, misconfiguration, risk analysis or a security audit.
 
@@ -69,6 +77,23 @@ cannot write is the strongest guarantee that the review will not change anything
 
 If you intend to use apply mode, switch to a deployment role at that point rather than
 starting the review with one — and prefer a non-production account for the first run.
+
+## Using it on a team
+
+- **Improve the skill through pull requests.** When the review misses something or flags a
+  false positive, add or adjust the check in `references/layer-checklist.md` and explain the
+  reasoning in the PR — the history then carries the judgement, not just the rule.
+- **`security_issues.md` belongs in the repository under review, not here.** This repository
+  holds only the template, `assets/security_issues_template.md`.
+- **Never commit `evidence/`.** It is excluded in `.gitignore`, but AWS configuration dumps
+  contain account IDs and resource names — check before sharing them anywhere.
+- **Tag releases.** Recording which version of the skill produced a given review makes later
+  changes to the criteria traceable.
+
+```bash
+git tag -a v1.1.0 -m "..."
+git push origin v1.1.0
+```
 
 ## Layout
 
@@ -83,10 +108,8 @@ aws-serverless-security-review/
 │   └── workshop-modules.md             workshop module mapping, rollout order, costs
 ├── assets/
 │   └── security_issues_template.md     the report structure
-├── scripts/
-│   └── collect_aws_evidence.sh         read-only inventory script
-└── docs/
-    └── github-setup.md                 how to publish and version this skill
+└── scripts/
+    └── collect_aws_evidence.sh         read-only inventory script
 ```
 
 ## License
